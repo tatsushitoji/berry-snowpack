@@ -1,0 +1,30 @@
+{
+  "name": "berry-snowpack",
+  "scripts": {
+    "build": "yarn build:js && yarn build:esm && yarn copy",
+    "build:js": "babel src/ --extensions '.ts,.tsx' -d dist",
+    "build:js:watch": "babel src/ -d dist --watch",
+    "build:esm": "snowpack --include \"dist/**/*.js\" --dest dist/web_modules",
+    "copy": "npx cpx index.html ./dist",
+    "dev": "yarn build && yarn build:js:watch & serve -s dist",
+    "prepare": "snowpack"
+  },
+  "dependencies": {
+    "react": "npm:@reactesm/react@^0.1.0",
+    "react-dom": "npm:@reactesm/react-dom@^0.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "@yarnpkg/pnpify": "^2.0.0-rc.18",
+    "snowpack": "^1.5.2",
+    "typescript": "^3.8.3"
+  }
+}
